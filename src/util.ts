@@ -37,3 +37,25 @@ export function thunk(fn: Function) {
     };
   };
 }
+
+function char2buf(str) {
+  var out = new ArrayBuffer(str.length * 2);
+  var u16a = new Uint16Array(out);
+  var strs = str.split("");
+  for (var i = 0; i < strs.length; i++) {
+    u16a[i] = strs[i].charCodeAt();
+  }
+  return out;
+}
+
+function buf2char(buf) {
+  var out = "";
+  var u16a = new Uint16Array(buf);
+  var single;
+  for (var i = 0; i < u16a.length; i++) {
+    single = u16a[i].toString(16);
+    while (single.length < 4) single = "0".concat(single);
+    out += "\\u" + single;
+  }
+  return eval("'" + out + "'");
+}

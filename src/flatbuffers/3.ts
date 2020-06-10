@@ -1,12 +1,14 @@
 import JSBI from "jsbi";
 
 class JSBF extends Array {
-  constructor(length: number) {
+  constructor(length: number, sign?: boolean) {
     super(length);
+    this.sign = sign;
   }
+  sign: any;
 
-  format1111() {
-    console.log("1212121");
+  toString() {
+    return "";
   }
 
   static BigFloat(from: number | string | any): JSBF {
@@ -14,8 +16,6 @@ class JSBF extends Array {
     let arr = from.split(/\./);
 
     let result = new JSBF(0);
-    console.dir(result);
-    console.info(result.format1111);
     for (let index = 0; index < arr.length; index++) {
       result.push(JSBI.BigInt(arr[index]));
     }
@@ -27,18 +27,13 @@ class JSBF extends Array {
     for (let index = 0; index < 2; index++) {
       result.push(JSBI.add(x[index], y[index]));
     }
-    console.info(result.format1111);
     return result;
   }
 }
 
-let aaa = JSBF.BigFloat("1234.4321");
+let aa = JSBF.BigFloat("1234.4321");
+let bb = JSBF.BigFloat("5678.8765");
 
-console.info(aaa);
-console.info(aaa[0]);
-console.info(aaa[1]);
-// let bb = JSBF.BigFloat("5678.8765");
+let add = JSBF.add(aa, bb);
 
-// let add = JSBF.add(aa, bb);
-
-console.info(aaa.format1111());
+console.info(add);
