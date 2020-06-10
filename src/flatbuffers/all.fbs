@@ -1,0 +1,41 @@
+enum Color:byte { Red = 0, Green = 1, Blue = 2 }
+
+union TNumber { Max, Min }
+
+table Max {
+  tNumber:long;
+}
+
+table Min {
+  tNumber:long;
+}
+
+table All{
+    tBool:bool;
+    tByte:byte;
+    tUbyte:ubyte;
+    tShort:short;
+    tUshort:ushort;
+    tInt:int;
+    tFloat:float;
+    tLong:long;
+    tUlong:ulong;
+    tDouble:double;
+    tInt8:int8;
+    tInt16:int16;
+    tUint16:uint16;
+    tInt32:int32;
+    tUint32:uint32;
+    tInt64:int64;
+    tUint64:uint64;
+    tFloat32:float32;
+    tFloat64:float64;
+    tString:string;
+    // tBigint:bigint;
+    tMax:Max;
+    tMin:Min;
+    tNumber: TNumber;
+    tColor: Color;
+}
+
+root_type All;
